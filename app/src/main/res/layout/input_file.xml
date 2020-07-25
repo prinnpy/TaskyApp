@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Task"
+        android:textColor="#444444"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginBottom="25dp"/>
+
+    <EditText
+        android:id="@+id/taskTitle"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="Title Here..."
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:textColor="#444444"
+        android:textColorHint="#8b8b8b"
+        android:background="@drawable/inputs"
+        android:padding="10dp"
+        android:textSize="18dp"
+        android:inputType="text"
+        android:drawableTint="#8b8b8b"
+        android:drawablePadding="10dp"
+        />
+
+    <EditText
+        android:id="@+id/taskDes"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="Description..."
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:textColor="#444444"
+        android:textColorHint="#8b8b8b"
+        android:background="@drawable/inputs"
+        android:padding="10dp"
+        android:textSize="18dp"
+        android:inputType="text"
+        android:drawableTint="#8b8b8b"
+        android:drawablePadding="10dp"
+        />
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="40dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_marginRight="10dp">
+
+            <Button
+                android:id="@+id/cancelButton"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:text="Cancel"
+                android:textSize="20dp"
+                android:textColor="#444444"
+                android:textAllCaps="false"
+                android:background="@drawable/roundedcorner"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_marginLeft="10dp">
+
+            <Button
+                android:id="@+id/saveButton"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:text="Add Task"
+                android:textSize="20dp"
+                android:textColor="#444444"
+                android:textAllCaps="false"
+                android:background="@drawable/roundedcorner"
+                />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

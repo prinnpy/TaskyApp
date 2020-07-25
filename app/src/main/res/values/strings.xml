@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Tasky</string>
+    <string name="welcomeback">Welcome back to Tasky</string>
+    <string name="subtitle">get your day back to plan</string>
+</resources>
