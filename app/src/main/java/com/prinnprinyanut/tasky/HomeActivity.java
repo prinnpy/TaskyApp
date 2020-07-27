@@ -3,6 +3,7 @@ package com.prinnprinyanut.tasky;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -165,12 +166,14 @@ public class HomeActivity extends AppCompatActivity {
 
         FirebaseRecyclerOptions<Model> options = new FirebaseRecyclerOptions.Builder<Model>().setQuery(reference, Model.class).build();
 
-        FirebaseRecyclerAdapter<Model, MyViewHolder> adapter = new FirebaseRecyclerAdapter<Model, MyViewHolder>(options) {
+        final FirebaseRecyclerAdapter<Model, MyViewHolder> adapter = new FirebaseRecyclerAdapter<Model, MyViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull MyViewHolder holder, final int position, @NonNull final Model model) {
                 holder.setDate(model.getDate());
                 holder.setTask(model.getTask());
                 holder.setDescription(model.getDescription());
+
+                holder.itemView.setTag(model.getId());
 
                 holder.mView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -198,6 +201,22 @@ public class HomeActivity extends AppCompatActivity {
 
         recyclerView.setAdapter(adapter);
         adapter.startListening();
+
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                String d_id = (String) viewHolder.itemView.getTag();
+                reference.child(d_id).removeValue();
+                Toast.makeText(HomeActivity.this, "Delete task successfully!", Toast.LENGTH_SHORT).show();
+                adapter.notifyDataSetChanged();
+            }
+        }).attachToRecyclerView(recyclerView);
+
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
